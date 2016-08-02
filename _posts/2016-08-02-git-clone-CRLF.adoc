@@ -1,0 +1,12 @@
+= git clone が CRLF になる
+:hp-tags: windows, git
+
+```shell
+git config --global core.autoCRLF false
+```
+
+にしても相変わらず改行コードが CRLF で clone される時は
+`.gitattribute` ファイルに `* text=auto`
+が追加されていないか確認する。
+
+`* text=auto` が存在すると `autoCRLF` の設定が無視されるらしい。
