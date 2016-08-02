@@ -5,7 +5,9 @@
     "branch": "gh-pages",
     "cname": "blog.aspick.net"
   },
-  "site": {},
+  "site": {
+    "title": "aspick blog"
+  },
   "socialnetwork": {},
   "theme": {
     "name": "casper"
