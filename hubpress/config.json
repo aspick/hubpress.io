@@ -6,7 +6,8 @@
     "cname": "blog.aspick.net"
   },
   "site": {
-    "title": "aspick blog"
+    "title": "aspick blog",
+    "googleAnalytics": "UA-41860822-1"
   },
   "socialnetwork": {
     "twitter": "@aspick",
