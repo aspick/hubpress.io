@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 02 Aug 2016 06:03:04 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[git clone が CRLF になる]]></title><description><![CDATA[<div class="listingblock">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Wed, 03 Aug 2016 04:54:57 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Ansible で windows を操作する]]></title><description><![CDATA[<div class="paragraph">
+<p>手作業でのデプロイをどうにかしたくて、Ansible を導入することにした。調べた範囲でいい点が、エージェントレスなのでターゲットのマシンにインンストールするものがない点。といっても、Windows Server を操作するには Python 2+ のインストールの他にも操作が必要だったのでメモ。</p>
+</div>
+<div class="paragraph">
+<p>オフィシャルに案内されてる手順がこれ</p>
+</div>
+<div class="paragraph">
+<p><a href="http://docs.ansible.com/ansible/intro_windows.html" class="bare">http://docs.ansible.com/ansible/intro_windows.html</a></p>
+</div>
+<div class="paragraph">
+<p>手順に沿って <code>ansible</code> コマンドを実行しようとしても</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">&lt;hostname&gt; | FAILED! =&gt; {
+    "failed": true,
+    "msg": "the connection attempt timed out"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>となって接続できない</p>
+</div>
+<div class="paragraph">
+<p>で、必要な手順はこれ</p>
+</div>
+<div class="paragraph">
+<p><a href="http://qiita.com/yunano/items/f9d5652a296931a09a70#windows側の準備" class="bare">http://qiita.com/yunano/items/f9d5652a296931a09a70#windows側の準備</a></p>
+</div>
+<div class="paragraph">
+<p>この操作をした後に <code>ansible windows -i ./inventory -m win_ping</code> をすると</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">&lt;hostname&gt; | SUCCESS =&gt; {
+    "changed": false,
+    "ping": "pong"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>で成功した</p>
+</div>]]></description><link>http://blog.aspick.net/2016/08/03/Ansible-windows.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/08/03/Ansible-windows.html</guid><category><![CDATA[windows]]></category><category><![CDATA[ ansible]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Wed, 03 Aug 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[git clone が CRLF になる]]></title><description><![CDATA[<div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-shell" data-lang="shell">git config --global core.autoCRLF false</code></pre>
 </div>
