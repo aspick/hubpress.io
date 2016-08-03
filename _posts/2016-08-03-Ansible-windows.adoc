@@ -1,0 +1,30 @@
+= Ansible で windows を操作する
+:hp-tags: windows, ansible
+
+手作業でのデプロイをどうにかしたくて、Ansible を導入することにした。調べた範囲でいい点が、エージェントレスなのでターゲットのマシンにインンストールするものがない点。といっても、Windows Server を操作するには Python 2+ のインストールの他にも操作が必要だったのでメモ。
+
+オフィシャルに案内されてる手順がこれ
+
+http://docs.ansible.com/ansible/intro_windows.html
+
+手順に沿って `ansible` コマンドを実行しようとしても
+```shell
+<hostname> | FAILED! => {
+    "failed": true, 
+    "msg": "the connection attempt timed out"
+}
+```
+となって接続できない
+
+で、必要な手順はこれ
+
+http://qiita.com/yunano/items/f9d5652a296931a09a70#windows側の準備
+
+この操作をした後に `ansible windows -i ./inventory -m win_ping` をすると
+```shell
+<hostname> | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+```
+で成功した
