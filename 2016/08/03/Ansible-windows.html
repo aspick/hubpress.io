@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Ansible で windows を操作する</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.aspick.net/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//blog.aspick.net/themes/casper/assets/css/screen.css?v=1470200097909" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="http://blog.aspick.net/2016/08/03/Ansible-windows.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="aspick blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ansible で windows を操作する" />
+    <meta property="og:description" content="手作業でのデプロイをどうにかしたくて、Ansible を導入することにした。調べた範囲でいい点が、エージェントレスなのでターゲットのマシンにインンストールするものがない点。といっても、Windows Server を操作するには Python 2+ のインストールの他にも操作が必要だったのでメモ。 オフィシャルに案内されてる手順がこれ http://docs.ansible.com/ansible/intro_windows.html 手順に沿って ansible コマンドを実行しようとしても &amp;lt;hostname&amp;gt; | FAILED! &#x3D;&amp;gt; {     &quot;failed&quot;: true,     &quot;msg&quot;: &quot;the connection attempt timed out" />
+    <meta property="og:url" content="http://blog.aspick.net/2016/08/03/Ansible-windows.html" />
+    <meta property="article:tag" content="windows" />
+    <meta property="article:tag" content=" ansible" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ansible で windows を操作する" />
+    <meta name="twitter:description" content="手作業でのデプロイをどうにかしたくて、Ansible を導入することにした。調べた範囲でいい点が、エージェントレスなのでターゲットのマシンにインンストールするものがない点。といっても、Windows Server を操作するには Python 2+ のインストールの他にも操作が必要だったのでメモ。 オフィシャルに案内されてる手順がこれ http://docs.ansible.com/ansible/intro_windows.html 手順に沿って ansible コマンドを実行しようとしても &amp;lt;hostname&amp;gt; | FAILED! &#x3D;&amp;gt; {     &quot;failed&quot;: true,     &quot;msg&quot;: &quot;the connection attempt timed out" />
+    <meta name="twitter:url" content="http://blog.aspick.net/2016/08/03/Ansible-windows.html" />
+    
+    <script type="application/ld+json">
+null
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="aspick blog" href="http://blog.aspick.net/rss/" />
+</head>
+<body class="post-template tag-windows tag-ansible nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-windows tag-ansible">
+
+        <header class="post-header">
+            <h1 class="post-title">Ansible で windows を操作する</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-08-03">03 August 2016</time>  on <a href="http://blog.aspick.net/tag/windows/">windows</a>, <a href="http://blog.aspick.net/tag/ansible/"> ansible</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <div class="paragraph">
+<p>手作業でのデプロイをどうにかしたくて、Ansible を導入することにした。調べた範囲でいい点が、エージェントレスなのでターゲットのマシンにインンストールするものがない点。といっても、Windows Server を操作するには Python 2+ のインストールの他にも操作が必要だったのでメモ。</p>
+</div>
+<div class="paragraph">
+<p>オフィシャルに案内されてる手順がこれ</p>
+</div>
+<div class="paragraph">
+<p><a href="http://docs.ansible.com/ansible/intro_windows.html" class="bare">http://docs.ansible.com/ansible/intro_windows.html</a></p>
+</div>
+<div class="paragraph">
+<p>手順に沿って <code>ansible</code> コマンドを実行しようとしても</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">&lt;hostname&gt; | FAILED! =&gt; {
+    "failed": true,
+    "msg": "the connection attempt timed out"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>となって接続できない</p>
+</div>
+<div class="paragraph">
+<p>で、必要な手順はこれ</p>
+</div>
+<div class="paragraph">
+<p><a href="http://qiita.com/yunano/items/f9d5652a296931a09a70#windows側の準備" class="bare">http://qiita.com/yunano/items/f9d5652a296931a09a70#windows側の準備</a></p>
+</div>
+<div class="paragraph">
+<p>この操作をした後に <code>ansible windows -i ./inventory -m win_ping</code> をすると</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">&lt;hostname&gt; | SUCCESS =&gt; {
+    "changed": false,
+    "ping": "pong"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>で成功した</p>
+</div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="http://blog.aspick.net/author/aspick/" style="background-image: url(https://avatars.githubusercontent.com/u/956774?v&#x3D;3)"><span class="hidden">Yugo Terada's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="http://blog.aspick.net/author/aspick/">Yugo Terada</a></h4>
+
+                    <p>Read <a href="http://blog.aspick.net/author/aspick/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">JAPAN</span>
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Ansible%20%E3%81%A7%20windows%20%E3%82%92%E6%93%8D%E4%BD%9C%E3%81%99%E3%82%8B&amp;url=http://blog.aspick.net/2016/08/03/Ansible-windows.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.aspick.net/2016/08/03/Ansible-windows.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.aspick.net/2016/08/03/Ansible-windows.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://blog.aspick.net">aspick blog</a> &copy; 2016</section>
+            <section class="poweredby">Proudly published with <a href="http://hubpress.io">HubPress</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/jquery.fitvids.js?v=1470200097909"></script>
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/index.js?v=1470200097909"></script>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41860822-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
