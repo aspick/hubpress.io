@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>VC++ で C4819 エラー</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.aspick.net/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//blog.aspick.net/themes/casper/assets/css/screen.css?v=1470717683864" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="http://blog.aspick.net/2016/08/09/VC-C4819.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="aspick blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="VC++ で C4819 エラー" />
+    <meta property="og:description" content="warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイ ルを Unicode 形式で保存してください。 error C2220: 警告をエラーとして扱いました。&#x27;object&#x27; ファイルは生成されません。 ファイルのエンコードエラーなのですが、問題のファイルはすでに UTF-8 で保存されている。本当の問題は BOM なしの UTF-8 で保存されていることで、windows では BOM ありの UTF-8 ではないといけないぽい。 vc++ で対象のファイルを開いて、[ファイル]&amp;#8594;[保存オプションの詳細設定] からエンコードを選択して保存できるので、保存し直すと解消する。 これを pow" />
+    <meta property="og:url" content="http://blog.aspick.net/2016/08/09/VC-C4819.html" />
+    <meta property="article:tag" content="windows" />
+    <meta property="article:tag" content=" vc++" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="VC++ で C4819 エラー" />
+    <meta name="twitter:description" content="warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイ ルを Unicode 形式で保存してください。 error C2220: 警告をエラーとして扱いました。&#x27;object&#x27; ファイルは生成されません。 ファイルのエンコードエラーなのですが、問題のファイルはすでに UTF-8 で保存されている。本当の問題は BOM なしの UTF-8 で保存されていることで、windows では BOM ありの UTF-8 ではないといけないぽい。 vc++ で対象のファイルを開いて、[ファイル]&amp;#8594;[保存オプションの詳細設定] からエンコードを選択して保存できるので、保存し直すと解消する。 これを pow" />
+    <meta name="twitter:url" content="http://blog.aspick.net/2016/08/09/VC-C4819.html" />
+    
+    <script type="application/ld+json">
+null
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="aspick blog" href="http://blog.aspick.net/rss/" />
+</head>
+<body class="post-template tag-windows tag-vc nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-windows tag-vc">
+
+        <header class="post-header">
+            <h1 class="post-title">VC++ で C4819 エラー</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-08-09">09 August 2016</time>  on <a href="http://blog.aspick.net/tag/windows/">windows</a>, <a href="http://blog.aspick.net/tag/vc/"> vc++</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイ ルを Unicode 形式で保存してください。
+error C2220: 警告をエラーとして扱いました。'object' ファイルは生成されません。</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ファイルのエンコードエラーなのですが、問題のファイルはすでに UTF-8 で保存されている。本当の問題は BOM なしの UTF-8 で保存されていることで、windows では BOM ありの UTF-8 ではないといけないぽい。</p>
+</div>
+<div class="paragraph">
+<p>vc++ で対象のファイルを開いて、[ファイル]&#8594;[保存オプションの詳細設定] からエンコードを選択して保存できるので、保存し直すと解消する。</p>
+</div>
+<div class="paragraph">
+<p>これを powershell 上で行うには</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">$MyFile = Get-Content $MyPath
+$MyFile | Out-File -Encoding "UTF8" $MyPath</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>とすればいい。</p>
+</div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="http://blog.aspick.net/author/aspick/" style="background-image: url(https://avatars.githubusercontent.com/u/956774?v&#x3D;3)"><span class="hidden">Yugo Terada's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="http://blog.aspick.net/author/aspick/">Yugo Terada</a></h4>
+
+                    <p>Read <a href="http://blog.aspick.net/author/aspick/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">JAPAN</span>
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=VC%2B%2B%20%E3%81%A7%20C4819%20%E3%82%A8%E3%83%A9%E3%83%BC&amp;url=http://blog.aspick.net/2016/08/09/VC-C4819.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.aspick.net/2016/08/09/VC-C4819.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.aspick.net/2016/08/09/VC-C4819.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://blog.aspick.net">aspick blog</a> &copy; 2016</section>
+            <section class="poweredby">Proudly published with <a href="http://hubpress.io">HubPress</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/jquery.fitvids.js?v=1470717683864"></script>
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/index.js?v=1470717683864"></script>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41860822-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
