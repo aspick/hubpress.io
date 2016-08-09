@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Wed, 03 Aug 2016 04:54:57 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Ansible で windows を操作する]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 09 Aug 2016 04:41:23 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[VC++ で C4819 エラー]]></title><description><![CDATA[<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイ ルを Unicode 形式で保存してください。
+error C2220: 警告をエラーとして扱いました。'object' ファイルは生成されません。</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ファイルのエンコードエラーなのですが、問題のファイルはすでに UTF-8 で保存されている。本当の問題は BOM なしの UTF-8 で保存されていることで、windows では BOM ありの UTF-8 ではないといけないぽい。</p>
+</div>
+<div class="paragraph">
+<p>vc++ で対象のファイルを開いて、[ファイル]&#8594;[保存オプションの詳細設定] からエンコードを選択して保存できるので、保存し直すと解消する。</p>
+</div>
+<div class="paragraph">
+<p>これを powershell 上で行うには</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-powershell" data-lang="powershell">$MyFile = Get-Content $MyPath
+$MyFile | Out-File -Encoding "UTF8" $MyPath</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>とすればいい。</p>
+</div>]]></description><link>http://blog.aspick.net/2016/08/09/VC-C4819.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/08/09/VC-C4819.html</guid><category><![CDATA[windows]]></category><category><![CDATA[ vc++]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Tue, 09 Aug 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Ansible で windows を操作する]]></title><description><![CDATA[<div class="paragraph">
 <p>手作業でのデプロイをどうにかしたくて、Ansible を導入することにした。調べた範囲でいい点が、エージェントレスなのでターゲットのマシンにインンストールするものがない点。といっても、Windows Server を操作するには Python 2+ のインストールの他にも操作が必要だったのでメモ。</p>
 </div>
 <div class="paragraph">
