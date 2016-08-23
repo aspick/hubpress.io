@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 09 Aug 2016 04:41:23 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[VC++ で C4819 エラー]]></title><description><![CDATA[<div class="listingblock">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 23 Aug 2016 15:02:06 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[MSVCP140.dll が見つかりません、を回避する]]></title><description><![CDATA[<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>必要なランタイムライブラリをダイナミックリンクする設定になっていると、インストール先の windows にrランタイム dll が入っていないと実行時にエラーになって実行できない。</p>
+</div>
+<div class="paragraph">
+<p>ランタイムライブラリをスタティックリンクしてビルドするとそのような問題を回避できる。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">vc++ プロジェクトの設定 -&gt; C/C++ -&gt; コード生成 -&gt; ランタイム ライブラリ</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>の設定項目を <code>/MD</code> から <code>/MT</code> に変更してビルドする。</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__">参考リンク</h4>
+<div class="paragraph">
+<p><a href="https://msdn.microsoft.com/en-us/library/2kzt1wy3" class="bare">https://msdn.microsoft.com/en-us/library/2kzt1wy3</a></p>
+</div>
+</div>]]></description><link>http://blog.aspick.net/2016/08/23/MSVC-P40dll.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/08/23/MSVC-P40dll.html</guid><category><![CDATA[windows]]></category><category><![CDATA[ vc++]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Tue, 23 Aug 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[VC++ で C4819 エラー]]></title><description><![CDATA[<div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイ ルを Unicode 形式で保存してください。
 error C2220: 警告をエラーとして扱いました。'object' ファイルは生成されません。</code></pre>
