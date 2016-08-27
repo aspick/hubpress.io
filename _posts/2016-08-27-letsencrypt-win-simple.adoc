@@ -1,0 +1,20 @@
+= letsencrypt-win-simple で出力先パスを設定する
+:hp-tags: windows, letsencrypt
+
+Windwos サーバーで let's encrypt を導入しようとした時にお世話になる https://github.com/Lone-Coder/letsencrypt-win-simple[letsencrypt-win-simple] ですが、コマンドラインオプションに出力先パスを指定する方法がありません。
+
+exe に同梱されている `letsencrypt.exe.config` ファイルを編集することで、出力先パスを変更することができます。
+
+35行目あたりの
+```xml
+<setting name="CertificatePath" serializeAs="String">
+  <value />
+</setting>
+```
+を
+```xml
+<setting name="CertificatePath" serializeAs="String">
+  <value>C:\Path\To\Anyware</value>
+</setting>
+```
+に変更した上で `letsencrypt.exe` を実行すると、設定が変更された上で実行されます。
