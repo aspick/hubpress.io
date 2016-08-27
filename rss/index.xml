@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 23 Aug 2016 15:33:35 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[MSVCP140.dll が見つかりません、を回避する]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Sat, 27 Aug 2016 02:54:09 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[letsencrypt-win-simple で出力先パスを設定する]]></title><description><![CDATA[<div class="paragraph">
+<p>Windwos サーバーで let&#8217;s encrypt を導入しようとした時にお世話になる <a href="https://github.com/Lone-Coder/letsencrypt-win-simple">letsencrypt-win-simple</a> ですが、コマンドラインオプションに出力先パスを指定する方法がありません。</p>
+</div>
+<div class="paragraph">
+<p>exe に同梱されている <code>letsencrypt.exe.config</code> ファイルを編集することで、出力先パスを変更することができます。</p>
+</div>
+<div class="paragraph">
+<p>35行目あたりの</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;setting name="CertificatePath" serializeAs="String"&gt;
+  &lt;value /&gt;
+&lt;/setting&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>を</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;setting name="CertificatePath" serializeAs="String"&gt;
+  &lt;value&gt;C:\Path\To\Anyware&lt;/value&gt;
+&lt;/setting&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>に変更した上で <code>letsencrypt.exe</code> を実行すると、設定が変更された上で実行されます。</p>
+</div>]]></description><link>http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html</guid><category><![CDATA[windows]]></category><category><![CDATA[ letsencrypt]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Sat, 27 Aug 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[MSVCP140.dll が見つかりません、を回避する]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>必要なランタイムライブラリをダイナミックリンクする設定になっていると、インストール先の windows にrランタイム dll が入っていないと実行時にエラーになって実行できない。</p>
