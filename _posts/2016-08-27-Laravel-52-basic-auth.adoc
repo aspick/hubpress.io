@@ -1,0 +1,56 @@
+= Laravel 5.2 で basic auth
+:hp-tags: php, laravel
+
+Web サイトを作っていて、管理画面を表示するための認可として Basic 認証を使いたい時があると思います。
+Laravel 5.2 では、Basic 認証を提供する Middleware が提供されていますが、デフォルトではユーザーを認証する実装になっており、管理用の id と pw を使ってい安易的に認可する方法には使いづらいです。
+以下のようにすると、実現できます。
+
+`app/Http/Middleware` に以下の内容で `AdminAuthenticate.php` を作成
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Response;
+
+class AdminAuthenticate
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        $user = $request->getUser();
+        $pass = $request->getPassword();
+        if($user == '<admin name>' && $pass = '<admin password>'){
+            return $next($request);
+        }
+
+        $headers = ['WWW-Authenticate' => 'Basic'];
+        return new Response('Invalid credentials.', 401, $headers);
+    }
+
+}
+
+```
+認可できなかった場合に、ブラウザのログインプロンプトを表示させるためのレスポンスを返す必要があります。他のクラスに依存していないので、
+https://github.com/laravel/framework/blob/7d116dc5a008e69c97f864af79ac46ab6a8d5895/src/Illuminate/Auth/SessionGuard.php#336[ここから] コピペしました。
+
+次に、`app/Http/Kernel.php` の `$routeMiddleware` に 
+```php
+'auth.admin' => \App\Http\Middleware\AdminAuthenticate::class,
+```
+を追加します。
+
+最後に、`app/Http/routes.php` で、管理用 url を
+```php
+Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin'], function(){
+ //
+}
+```
+などで囲むと、`http://localhost/admin` 以下の url にアクセスする場合にのみ、Basic 認証が要求されます。
