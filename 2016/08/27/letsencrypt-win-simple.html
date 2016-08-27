@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>letsencrypt-win-simple で出力先パスを設定する</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.aspick.net/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//blog.aspick.net/themes/casper/assets/css/screen.css?v=1472266449933" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="aspick blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="letsencrypt-win-simple で出力先パスを設定する" />
+    <meta property="og:description" content="Windwos サーバーで let&amp;#8217;s encrypt を導入しようとした時にお世話になる letsencrypt-win-simple ですが、コマンドラインオプションに出力先パスを指定する方法がありません。 exe に同梱されている letsencrypt.exe.config ファイルを編集することで、出力先パスを変更することができます。 35行目あたりの &amp;lt;setting name&#x3D;&quot;CertificatePath&quot; serializeAs&#x3D;&quot;String&quot;&amp;gt;   &amp;lt;value /&amp;gt; &amp;lt;/setting&amp;gt; を &amp;lt;setting name&#x3D;&quot;CertificatePath&quot; serializeAs&#x3D;&quot;String&quot;&amp;gt;   &amp;" />
+    <meta property="og:url" content="http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html" />
+    <meta property="article:tag" content="windows" />
+    <meta property="article:tag" content=" letsencrypt" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="letsencrypt-win-simple で出力先パスを設定する" />
+    <meta name="twitter:description" content="Windwos サーバーで let&amp;#8217;s encrypt を導入しようとした時にお世話になる letsencrypt-win-simple ですが、コマンドラインオプションに出力先パスを指定する方法がありません。 exe に同梱されている letsencrypt.exe.config ファイルを編集することで、出力先パスを変更することができます。 35行目あたりの &amp;lt;setting name&#x3D;&quot;CertificatePath&quot; serializeAs&#x3D;&quot;String&quot;&amp;gt;   &amp;lt;value /&amp;gt; &amp;lt;/setting&amp;gt; を &amp;lt;setting name&#x3D;&quot;CertificatePath&quot; serializeAs&#x3D;&quot;String&quot;&amp;gt;   &amp;" />
+    <meta name="twitter:url" content="http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html" />
+    
+    <script type="application/ld+json">
+null
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="aspick blog" href="http://blog.aspick.net/rss/" />
+</head>
+<body class="post-template tag-windows tag-letsencrypt nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-windows tag-letsencrypt">
+
+        <header class="post-header">
+            <h1 class="post-title">letsencrypt-win-simple で出力先パスを設定する</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-08-27">27 August 2016</time>  on <a href="http://blog.aspick.net/tag/windows/">windows</a>, <a href="http://blog.aspick.net/tag/letsencrypt/"> letsencrypt</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <div class="paragraph">
+<p>Windwos サーバーで let&#8217;s encrypt を導入しようとした時にお世話になる <a href="https://github.com/Lone-Coder/letsencrypt-win-simple">letsencrypt-win-simple</a> ですが、コマンドラインオプションに出力先パスを指定する方法がありません。</p>
+</div>
+<div class="paragraph">
+<p>exe に同梱されている <code>letsencrypt.exe.config</code> ファイルを編集することで、出力先パスを変更することができます。</p>
+</div>
+<div class="paragraph">
+<p>35行目あたりの</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;setting name="CertificatePath" serializeAs="String"&gt;
+  &lt;value /&gt;
+&lt;/setting&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>を</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;setting name="CertificatePath" serializeAs="String"&gt;
+  &lt;value&gt;C:\Path\To\Anyware&lt;/value&gt;
+&lt;/setting&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>に変更した上で <code>letsencrypt.exe</code> を実行すると、設定が変更された上で実行されます。</p>
+</div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="http://blog.aspick.net/author/aspick/" style="background-image: url(https://avatars.githubusercontent.com/u/956774?v&#x3D;3)"><span class="hidden">Yugo Terada's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="http://blog.aspick.net/author/aspick/">Yugo Terada</a></h4>
+
+                    <p>Read <a href="http://blog.aspick.net/author/aspick/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">JAPAN</span>
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=letsencrypt-win-simple%20%E3%81%A7%E5%87%BA%E5%8A%9B%E5%85%88%E3%83%91%E3%82%B9%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B&amp;url=http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.aspick.net/2016/08/27/letsencrypt-win-simple.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://blog.aspick.net">aspick blog</a> &copy; 2016</section>
+            <section class="poweredby">Proudly published with <a href="http://hubpress.io">HubPress</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/jquery.fitvids.js?v=1472266449933"></script>
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/index.js?v=1472266449933"></script>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41860822-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
