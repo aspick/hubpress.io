@@ -1,0 +1,4 @@
+= Windows Server でポートが枯渇するときに確認する設定
+:hp-tags: windows, server, tcp
+
+Windows Server を使っていて、ローカルのポートが枯渇してそうな時に確認する設定は次の2つ
