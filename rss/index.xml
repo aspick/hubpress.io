@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Sat, 27 Aug 2016 03:15:50 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[letsencrypt-win-simple で出力先パスを設定する]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Thu, 01 Sep 2016 16:41:53 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[ObjC から Swift を呼ぶときにつかう ProjectName-Swift.h が見つからない時]]></title><description><![CDATA[<div class="paragraph">
+<p><code>Build Settings</code> &#8594; <code>Swift Conpiler - Code Generation</code> &#8594; <code>Objective-C Generated Interface Header Name</code> に正しい名前があるので確認する。</p>
+</div>
+<div class="paragraph">
+<p><code>ProjectName-Swift.h</code> ではなく <code>ProductName-Swift.h</code> が正解っぽい。</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="http://stackoverflow.com/a/33839180" class="bare">http://stackoverflow.com/a/33839180</a></p>
+</div>]]></description><link>http://blog.aspick.net/2016/09/02/ObjC-Swift-Project-Name-Swifth.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/09/02/ObjC-Swift-Project-Name-Swifth.html</guid><category><![CDATA[iOS]]></category><category><![CDATA[ ObjC]]></category><category><![CDATA[ Swift]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Fri, 02 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[letsencrypt-win-simple で出力先パスを設定する]]></title><description><![CDATA[<div class="paragraph">
 <p>Windwos サーバーで let&#8217;s encrypt を導入しようとした時にお世話になる <a href="https://github.com/Lone-Coder/letsencrypt-win-simple">letsencrypt-win-simple</a> ですが、コマンドラインオプションに出力先パスを指定する方法がありません。</p>
 </div>
 <div class="paragraph">
