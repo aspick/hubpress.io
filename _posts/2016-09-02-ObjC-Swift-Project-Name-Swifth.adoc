@@ -1,0 +1,9 @@
+= ObjC から Swift を呼ぶときにつかう ProjectName-Swift.h が見つからない時
+:hp-tags: iOS, ObjC, Swift
+
+`Build Settings` -> `Swift Conpiler - Code Generation` -> `Objective-C Generated Interface Header Name` に正しい名前があるので確認する。
+
+`ProjectName-Swift.h` ではなく `ProductName-Swift.h` が正解っぽい。
+
+---
+http://stackoverflow.com/a/33839180
