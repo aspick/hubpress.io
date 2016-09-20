@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Thu, 01 Sep 2016 16:41:53 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[ObjC から Swift を呼ぶときにつかう ProjectName-Swift.h が見つからない時]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 20 Sep 2016 17:37:36 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[CircleCI で mono project をコンパイル & テストを通す]]></title><description><![CDATA[<div class="sect1">
+<h2 id="__">結論</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&lt;script src="https://gist.github.com/aspick/7aec7614e2249abda699c4d3b993802a.js"&gt;&lt;/script&gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___2">やったこと</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>新しいバージョンの mono を入れるために、公式ドキュメントに従って apt にソースを追加する</p>
+</li>
+<li>
+<p>諸々を <code>apt-get install</code> する。できるだけ circleci のキャッシュに乗るように努力する</p>
+</li>
+<li>
+<p>SSL 通信用の証明書等も一緒に入れる</p>
+</li>
+<li>
+<p>NuGet の新しいやつを取ってくる</p>
+</li>
+<li>
+<p>NuGet でソリューションで使っているパッケージをリストアする</p>
+</li>
+<li>
+<p>mono についてくる <code>xbuild</code> でコンパイル</p>
+</li>
+<li>
+<p><code>nunit-console</code> でテストを実行。この時コンパイル後のテスト用 dll を指定する</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___3">大変だったこと</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ネット上の情報が古かったりバラバラだったりして、nuget のパッケージリストアする部分の証明書周りでかなり詰まった。最初から公式ドキュメントに従えばよかった。書いてある通りにやったら新しい mono が入って、証明書も同時に入って、新しい nuget で動いた。</p>
+</div>
+</div>
+</div>]]></description><link>http://blog.aspick.net/2016/09/21/CircleCI-mono-project.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/09/21/CircleCI-mono-project.html</guid><category><![CDATA[circleci]]></category><category><![CDATA[ mono]]></category><category><![CDATA[ c#]]></category><category><![CDATA[ nunit]]></category><category><![CDATA[ nuget]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Wed, 21 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[ObjC から Swift を呼ぶときにつかう ProjectName-Swift.h が見つからない時]]></title><description><![CDATA[<div class="paragraph">
 <p><code>Build Settings</code> &#8594; <code>Swift Conpiler - Code Generation</code> &#8594; <code>Objective-C Generated Interface Header Name</code> に正しい名前があるので確認する。</p>
 </div>
 <div class="paragraph">
