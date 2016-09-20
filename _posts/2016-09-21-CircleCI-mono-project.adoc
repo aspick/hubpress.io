@@ -1,0 +1,17 @@
+= CircleCI で mono project をコンパイル & テストを通す
+:hp-tags: circleci, mono, c#, nunit, nuget
+
+== 結論
+<script src="https://gist.github.com/aspick/7aec7614e2249abda699c4d3b993802a.js"></script>
+
+== やったこと
+- 新しいバージョンの mono を入れるために、公式ドキュメントに従って apt にソースを追加する
+- 諸々を `apt-get install` する。できるだけ circleci のキャッシュに乗るように努力する
+- SSL 通信用の証明書等も一緒に入れる
+- NuGet の新しいやつを取ってくる
+- NuGet でソリューションで使っているパッケージをリストアする
+- mono についてくる `xbuild` でコンパイル
+- `nunit-console` でテストを実行。この時コンパイル後のテスト用 dll を指定する
+
+== 大変だったこと
+ネット上の情報が古かったりバラバラだったりして、nuget のパッケージリストアする部分の証明書周りでかなり詰まった。最初から公式ドキュメントに従えばよかった。書いてある通りにやったら新しい mono が入って、証明書も同時に入って、新しい nuget で動いた。
