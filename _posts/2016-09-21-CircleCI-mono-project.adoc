@@ -2,7 +2,9 @@
 :hp-tags: circleci, mono, c#, nunit, nuget
 
 == 結論
+++++
 <script src="https://gist.github.com/aspick/7aec7614e2249abda699c4d3b993802a.js"></script>
+++++
 
 == やったこと
 - 新しいバージョンの mono を入れるために、公式ドキュメントに従って apt にソースを追加する
