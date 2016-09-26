@@ -1,0 +1,25 @@
+= XElement.Save() で 6KB しか保存されないとき
+:hp-tags: C#, XML
+
+## 結論
+`writer.Flush()` を呼ぶ
+
+## 問題
+```c#
+XElement element = ...;
+
+string ouputPath = "...";
+XmlWriter writer = XmlWriter.Create(outputPath);
+
+element.Save(writer);
+```
+とやったときに、`outputPath` に作成されたファイルが 6KB くらいで途切れてしまっている。
+
+## 解決
+```c#
+writer.Flush();
+```
+これを最後に追加する。
+
+---
+http://stackoverflow.com/a/10954595
