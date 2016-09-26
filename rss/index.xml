@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 20 Sep 2016 17:41:07 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[CircleCI で mono project をコンパイル & テストを通す]]></title><description><![CDATA[<div class="sect1">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Mon, 26 Sep 2016 06:05:10 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[XElement.Save() で 6KB しか保存されないとき]]></title><description><![CDATA[<div class="sect1">
+<h2 id="__">結論</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>writer.Flush()</code> を呼ぶ</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___2">問題</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c#" data-lang="c#">XElement element = ...;
+
+string ouputPath = "...";
+XmlWriter writer = XmlWriter.Create(outputPath);
+
+element.Save(writer);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>とやったときに、<code>outputPath</code> に作成されたファイルが 6KB くらいで途切れてしまっている。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___3">解決</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-c#" data-lang="c#">writer.Flush();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>これを最後に追加する。</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="http://stackoverflow.com/a/10954595" class="bare">http://stackoverflow.com/a/10954595</a></p>
+</div>
+</div>
+</div>]]></description><link>http://blog.aspick.net/2016/09/26/X-Eement-Save-6KB.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/09/26/X-Eement-Save-6KB.html</guid><category><![CDATA[C#]]></category><category><![CDATA[ XML]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Mon, 26 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[CircleCI で mono project をコンパイル & テストを通す]]></title><description><![CDATA[<div class="sect1">
 <h2 id="__">結論</h2>
 <div class="sectionbody">
 <script src="https://gist.github.com/aspick/7aec7614e2249abda699c4d3b993802a.js"></script>
