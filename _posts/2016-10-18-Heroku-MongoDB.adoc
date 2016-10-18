@@ -1,0 +1,23 @@
+= Heroku の MongoDB を乗り換える
+:hp-tags: heroku, mongodb
+
+様々な事情で Heroku の MongoDB の Add-on を他のものに乗り換える時の手順
+
+- ENV に入っている古い方の Add-on の URI を退避する
+- 新しい方の Add-on を Application に追加する
+- Application をメンテナンスモードにする
+`heroku maintenance:on`
+- 古い方の MongoDB をダウンロードする
+`mongodump -h (host):(port) -d (db_name) -u (user) -p (password) -o (temp_dir)`
+- ダンプしたデータから System 関連項目を削除する
+`rm -rf temp_dir/system*`
+- 新しい方にアップロードする
+`mongorestore -h (host):(port) -d (db_name) -u (user) -p (password) (temp_dir)`
+- ENV を新しい Add-on の URI に書き換える
+- メンテナンスモードを解除する
+`heroku maintenance:off`
+- 古い方の Add-on を削除する
+
+以上
+
+メンテナンスモードに一旦入るのは、ダンプした後に書き込まれた内容の喪失を防ぐため。
