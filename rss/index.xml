@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Mon, 26 Sep 2016 06:05:10 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[XElement.Save() で 6KB しか保存されないとき]]></title><description><![CDATA[<div class="sect1">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Tue, 18 Oct 2016 04:58:26 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Heroku の MongoDB を乗り換える]]></title><description><![CDATA[<div class="paragraph">
+<p>様々な事情で Heroku の MongoDB の Add-on を他のものに乗り換える時の手順</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ENV に入っている古い方の Add-on の URI を退避する</p>
+</li>
+<li>
+<p>新しい方の Add-on を Application に追加する</p>
+</li>
+<li>
+<p>Application をメンテナンスモードにする
+<code>heroku maintenance:on</code></p>
+</li>
+<li>
+<p>古い方の MongoDB をダウンロードする
+<code>mongodump -h (host):(port) -d (db_name) -u (user) -p (password) -o (temp_dir)</code></p>
+</li>
+<li>
+<p>ダンプしたデータから System 関連項目を削除する
+<code>rm -rf temp_dir/system*</code></p>
+</li>
+<li>
+<p>新しい方にアップロードする
+<code>mongorestore -h (host):(port) -d (db_name) -u (user) -p (password) (temp_dir)</code></p>
+</li>
+<li>
+<p>ENV を新しい Add-on の URI に書き換える</p>
+</li>
+<li>
+<p>メンテナンスモードを解除する
+<code>heroku maintenance:off</code></p>
+</li>
+<li>
+<p>古い方の Add-on を削除する</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>以上</p>
+</div>
+<div class="paragraph">
+<p>メンテナンスモードに一旦入るのは、ダンプした後に書き込まれた内容の喪失を防ぐため。</p>
+</div>]]></description><link>http://blog.aspick.net/2016/10/18/Heroku-MongoDB.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/10/18/Heroku-MongoDB.html</guid><category><![CDATA[heroku]]></category><category><![CDATA[ mongodb]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Tue, 18 Oct 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[XElement.Save() で 6KB しか保存されないとき]]></title><description><![CDATA[<div class="sect1">
 <h2 id="__">結論</h2>
 <div class="sectionbody">
 <div class="paragraph">
