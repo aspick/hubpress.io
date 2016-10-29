@@ -1,4 +1,4 @@
 = LINE Login の autologin が効かない時
-:hp-tags: login, api
+:hp-tags: line, api
 
 `state` をちゃんと設定しよう！
