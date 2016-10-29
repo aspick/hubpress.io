@@ -2,3 +2,7 @@
 :hp-tags: line, api
 
 `state` をちゃんと設定しよう！
+
+# 以下言い訳
+line login の URL に `state` を設定しなくても、autologin 以外はきちんと動作するので見落としていました。
+dev day の発表でもドキュメントでもちゃんと設定しましょうって書いてありました。
