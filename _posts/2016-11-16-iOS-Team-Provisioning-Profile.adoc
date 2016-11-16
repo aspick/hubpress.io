@@ -1,0 +1,8 @@
+= デバイスを追加した後に iOS Team Provisioning Profile を更新する方法
+:hp-tags: ios, xcode
+
+## 結論
+Xcode 上から Provisoining Profile を削除する
+
+## 詳細
+Xcode の [Preferences...] -> [Accounts] -> [View Detail] から Profile を選んで右クリックで削除する。すると、自動的に新しく作り直されて削除されていないように見えるけど、更新されている。
