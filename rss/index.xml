@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Sat, 29 Oct 2016 02:35:40 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[LINE Login の autologin が効かない時]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Wed, 16 Nov 2016 01:21:25 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[デバイスを追加した後に iOS Team Provisioning Profile を更新する方法]]></title><description><![CDATA[<div class="sect1">
+<h2 id="__">結論</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Xcode 上から Provisoining Profile を削除する</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___2">詳細</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Xcode の [Preferences&#8230;&#8203;] &#8594; [Accounts] &#8594; [View Detail] から Profile を選んで右クリックで削除する。すると、自動的に新しく作り直されて削除されていないように見えるけど、更新されている。</p>
+</div>
+</div>
+</div>]]></description><link>http://blog.aspick.net/2016/11/16/iOS-Team-Provisioning-Profile.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/11/16/iOS-Team-Provisioning-Profile.html</guid><category><![CDATA[ios]]></category><category><![CDATA[ xcode]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Wed, 16 Nov 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[LINE Login の autologin が効かない時]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p><code>state</code> をちゃんと設定しよう！</p>
