@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Wed, 16 Nov 2016 01:21:25 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[デバイスを追加した後に iOS Team Provisioning Profile を更新する方法]]></title><description><![CDATA[<div class="sect1">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[aspick blog]]></title><description><![CDATA[aspick blog]]></description><link>http://blog.aspick.net</link><generator>RSS for Node</generator><lastBuildDate>Sat, 31 Dec 2016 12:51:41 GMT</lastBuildDate><atom:link href="http://blog.aspick.net/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Rails5 + turbolinks + heroku + cloudflare で CSRF Token error になる時]]></title><description><![CDATA[<div class="sect1">
+<h2 id="__">結論</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>cloudflare の SSL 設定を <code>Full</code> にする。</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://github.com/plataformatec/devise/issues/2734#issuecomment-256534714" class="bare">https://github.com/plataformatec/devise/issues/2734#issuecomment-256534714</a></p>
+</div>
+</div>
+</div>]]></description><link>http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html</link><guid isPermaLink="true">http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html</guid><category><![CDATA[rails]]></category><category><![CDATA[ turbolinks]]></category><category><![CDATA[ heroku]]></category><category><![CDATA[ cloudflare]]></category><dc:creator><![CDATA[Yugo Terada]]></dc:creator><pubDate>Sat, 31 Dec 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[デバイスを追加した後に iOS Team Provisioning Profile を更新する方法]]></title><description><![CDATA[<div class="sect1">
 <h2 id="__">結論</h2>
 <div class="sectionbody">
 <div class="paragraph">
