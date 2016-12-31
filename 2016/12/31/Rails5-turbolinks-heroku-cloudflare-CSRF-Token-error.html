@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Rails5 + turbolinks + heroku + cloudflare で CSRF Token error になる時</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.aspick.net/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//blog.aspick.net/themes/casper/assets/css/screen.css?v=1483188701340" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="aspick blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rails5 + turbolinks + heroku + cloudflare で CSRF Token error になる時" />
+    <meta property="og:description" content="結論 cloudflare の SSL 設定を Full にする。 https://github.com/plataformatec/devise/issues/2734#issuecomment-256534714" />
+    <meta property="og:url" content="http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html" />
+    <meta property="article:tag" content="rails" />
+    <meta property="article:tag" content=" turbolinks" />
+    <meta property="article:tag" content=" heroku" />
+    <meta property="article:tag" content=" cloudflare" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Rails5 + turbolinks + heroku + cloudflare で CSRF Token error になる時" />
+    <meta name="twitter:description" content="結論 cloudflare の SSL 設定を Full にする。 https://github.com/plataformatec/devise/issues/2734#issuecomment-256534714" />
+    <meta name="twitter:url" content="http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html" />
+    
+    <script type="application/ld+json">
+null
+    </script>
+
+    <meta name="generator" content="HubPress" />
+    <link rel="alternate" type="application/rss+xml" title="aspick blog" href="http://blog.aspick.net/rss/" />
+</head>
+<body class="post-template tag-rails tag-turbolinks tag-heroku tag-cloudflare nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-rails tag-turbolinks tag-heroku tag-cloudflare">
+
+        <header class="post-header">
+            <h1 class="post-title">Rails5 + turbolinks + heroku + cloudflare で CSRF Token error になる時</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-12-31">31 December 2016</time>  on <a href="http://blog.aspick.net/tag/rails/">rails</a>, <a href="http://blog.aspick.net/tag/turbolinks/"> turbolinks</a>, <a href="http://blog.aspick.net/tag/heroku/"> heroku</a>, <a href="http://blog.aspick.net/tag/cloudflare/"> cloudflare</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <div class="sect1">
+<h2 id="__">結論</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>cloudflare の SSL 設定を <code>Full</code> にする。</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://github.com/plataformatec/devise/issues/2734#issuecomment-256534714" class="bare">https://github.com/plataformatec/devise/issues/2734#issuecomment-256534714</a></p>
+</div>
+</div>
+</div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="http://blog.aspick.net/author/aspick/" style="background-image: url(https://avatars.githubusercontent.com/u/956774?v&#x3D;3)"><span class="hidden">Yugo Terada's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="http://blog.aspick.net/author/aspick/">Yugo Terada</a></h4>
+
+                    <p>Read <a href="http://blog.aspick.net/author/aspick/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">JAPAN</span>
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Rails5%20%2B%20turbolinks%20%2B%20heroku%20%2B%20cloudflare%20%E3%81%A7%20CSRF%20Token%20error%20%E3%81%AB%E3%81%AA%E3%82%8B%E6%99%82&amp;url=http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://blog.aspick.net/2016/12/31/Rails5-turbolinks-heroku-cloudflare-CSRF-Token-error.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://blog.aspick.net">aspick blog</a> &copy; 2016</section>
+            <section class="poweredby">Proudly published with <a href="http://hubpress.io">HubPress</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();
+      </script>
+
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/jquery.fitvids.js?v=1483188701340"></script>
+    <script type="text/javascript" src="//blog.aspick.net/themes/casper/assets/js/index.js?v=1483188701340"></script>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41860822-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
