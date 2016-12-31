@@ -1,0 +1,9 @@
+= Rails5 + turbolinks + heroku + cloudflare で CSRF Token error になる時
+:hp-tags: rails, turbolinks, heroku, cloudflare
+
+## 結論
+
+cloudflare の SSL 設定を `Full` にする。
+
+---
+https://github.com/plataformatec/devise/issues/2734#issuecomment-256534714
